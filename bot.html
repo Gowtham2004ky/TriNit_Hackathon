@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.chat-container {
+    max-width: 400px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.chat-header {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: center;
+}
+
+.chat-body {
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.chat-footer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+h5{
+    
+}
+
+</style>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h5>sample bot</h5>
+        </div>
+        <div class="chat-body" id="chat-body"></div>
+        <div class="chat-footer">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script src="script.js">
+        const chatBody = document.getElementById('chat-body');
+const userInput = document.getElementById('user-input');
+
+function sendMessage() {
+    const userMessage = userInput.value;
+    if (userMessage.trim() === '') return;
+
+    displayMessage('User', userMessage);
+    setTimeout(() => {
+        // Simulate the bot's response after a short delay
+        displayMessage('Bot', getBotResponse(userMessage));
+    }, 500);
+
+    userInput.value = '';
+}
+
+function displayMessage(sender, message) {
+    const messageElement = document.createElement('div');
+    messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+    chatBody.appendChild(messageElement);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function getBotResponse(userMessage) {
+    // Simple predefined responses for demonstration purposes
+    const lowerCaseMessage = userMessage.toLowerCase();
+
+    if (lowerCaseMessage.includes('hello') || lowerCaseMessage.includes('hi')) {
+        return 'Hello! How can I help you today?';
+    } else if (lowerCaseMessage.includes('how are you')) {
+        return "I'm just a computer program, but I'm functioning well. Thank you for asking!";
+    } else {
+        return "I'm sorry, I didn't understand that. Can you please rephrase?";
+    }
+}
+
+    </script>
+</body>
+</html>

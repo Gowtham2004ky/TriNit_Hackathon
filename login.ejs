@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <nav>
+
+            <a href="register.ejs">register</a>
+        </nav>
+
+        <form action="/login" method="post">
+            <h1>Login Form</h1>
+            <input type="text" name="username" placeholder="username">
+            <br><br>
+            <input type="password" name="password" placeholder="password">
+            <br><br>
+            <button onclick="a()">Login</button>
+        </form>
+    </body>
+    <script>
+        function a()
+        {
+            document.write("Success");
+        }
+    </script>
+</html>
